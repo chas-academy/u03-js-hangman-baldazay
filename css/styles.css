@@ -75,6 +75,10 @@ ul {
   list-style-type: none;
 }
 
+section {
+  display: none;
+}
+
 footer {
   background-color: silver;
   border-top: 1px solid #666;
@@ -89,6 +93,7 @@ footer {
 
 #startGameBtn {
   font-size: 1.5em;
+  margin: 2em auto;
 }
 
 #gameBoard {

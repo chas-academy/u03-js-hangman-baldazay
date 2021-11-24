@@ -1,10 +1,24 @@
 // Globala variabler
 
-const wordList;      // Array: med spelets alla ord
-let selectedWord;    // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
+
+const wordList = ["flygplan", "universum", "tunnelbana", "fisk", "krokodil", "kärlek", "webbutveckling", "julgran" ];    // Array: med spelets alla ord
+const startButton = document.querySelector(button)[0];
+function randomNumber() {
+    return Math.floor(Math.random() * wordList.length);
+}
+
+startButton.onclick = function () {
+    document.querySelector(btn)[0].setAttribute("value", "disabled");
+    document.getElementsByTagName("sector").style.display = "inline";
+    let selectedWord = wordList[randomNumber()] // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
+
+}
+
+
 
 let guesses = 0;     // Number: håller antalet gissningar som gjorts
 let hangmanImg;      // Sträng: sökväg till bild som kommer visas (och ändras) fel svar. t.ex. `/images/h1.png`
+
 
 let msgHolderEl;     // DOM-nod: Ger meddelande när spelet är över
 let startGameBtnEl;  // DOM-nod: knappen som du startar spelet med
