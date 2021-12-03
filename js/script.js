@@ -1,18 +1,21 @@
 // Globala variabler
 
 
-const wordList = ["flygplan", "universum", "tunnelbana", "fisk", "krokodil", "kärlek", "webbutveckling", "julgran" ];    // Array: med spelets alla ord
-const startButton = document.querySelector(button)[0];
+let wordList = ["flygplan", "universum", "tunnelbana", "fisk", "krokodil", "kärlek", "webbutveckling", "julgran" ];    // Array: med spelets alla ord
+
+let hangmanImg = "images/h" + missesLeft + ".png";
+let hangmanImgEl = document.querySelector("#hangman");
+let msgHolderEl = document.querySelector("#message");
+let startGameBtnEl = document.querySelector("#startGameBtn");
+let letterButtonEls = document.querySelectorAll("#letterButtons button");
+let letterBoxEls = document.querySelectorAll("#letterBoxes li");
+
+let startButton = document.querySelector(button)[0];
 function randomNumber() {
     return Math.floor(Math.random() * wordList.length);
 }
 
-startButton.onclick = function () {
-    document.querySelector(btn)[0].setAttribute("value", "disabled");
-    document.getElementsByTagName("sector").style.display = "inline";
-    let selectedWord = wordList[randomNumber()] // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
-
-}
+let selectedWord  // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
 
 
 
@@ -26,7 +29,7 @@ let letterButtonEls; // Array av DOM-noder: Knapparna för bokstäverna
 let letterBoxEls;    // Array av DOM-noder: Rutorna där bokstäverna ska stå
 
 // Funktion som startar spelet vid knapptryckning, och då tillkallas andra funktioner
-// Funktion som slumpar fram ett ord
+// Funktion som slumpar fram ett ord *********************************************
 // Funktion som tar fram bokstävernas rutor, antal rutor beror på vilket ord slumptas fram
 // Funktion som körs när du trycker på bokstäverna och gissar bokstav
 // Funktion som ropas vid vinst eller förlust, gör olika saker beroende tillståndet
