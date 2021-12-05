@@ -24,7 +24,7 @@ body {
 }
 
 header {
-  background: url("img/hang_man_bg1.jpg") center center/cover no-repeat;
+  background: url("../img/hang_man_bg1.jpg") center center/cover no-repeat;
   min-height: 170px;
   color: white;
 }
