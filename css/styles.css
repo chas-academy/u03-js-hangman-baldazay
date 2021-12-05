@@ -8,6 +8,7 @@
 
 body {
   color: #666;
+  background-color: #cadaec;
   font-family: sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
@@ -23,18 +24,22 @@ body {
 }
 
 header {
-  background-color: silver;
-  color: #fff;
-  -webkit-box-flex: 0;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
+  background: url("img/hang_man_bg1.jpg") center center/cover no-repeat;
+  min-height: 170px;
+  color: white;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
 header h1 {
-  margin: 0;
-  font-size: 4.5em;
+  margin: 40px 0;
+  font-size: 3.5em;
   text-align: center;
+  font-family: 'UnifrakturMaguntia', cursive;
+}
+
+header span {
+  text-transform: uppercase;
 }
 
 main {
@@ -53,37 +58,118 @@ main:after {
 main > article {
   display: flex;
   flex-direction: column;
-  padding: 1.5em;
+  padding: 1em;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-main > article > button {
-  align-content: center;
-  justify-content: center;
+  font-family: 'UnifrakturMaguntia', cursive;;
+  color: rgb(24, 36, 207);
 }
 
 main > article > h2 {
   text-align: center;
-  color: #777;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.1em;
+}
+
+.start_btn_block {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+#startGameBtn {
+  min-width: 300px;
+  min-height: 60px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #d1d1d6;
+  background: #175269;
+  background: linear-gradient(90deg, rgb(54, 81, 138) 0%, rgb(76, 136, 185) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(48, 92, 173, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+}
+
+#startGameBtn::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #2b5c9c;
+  box-shadow: 0 0 60px rgb(54, 81, 138);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+#startGameBtn:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+#startGameBtn:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+#startGameBtn::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #3862b1;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+#startGameBtn:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 150px;
+    opacity: 0;
+  }
+}
+
+.hangman_image_block {
+  text-align: center;
+  margin: 10px;
 }
 
 ul {
   list-style-type: none;
 }
 
-/* section {
-  display: none;
-} */
-
 footer {
-  background-color: silver;
+  background-color: rgb(48, 47, 47);
   border-top: 1px solid #666;
   margin-top: 20px;
-  padding-top: 30px;
+  padding: 20px;
   color: #fff;
   font-size: 1.25em;
   width: 100%;
@@ -91,13 +177,8 @@ footer {
   text-align: center;
 }
 
-#startGameBtn {
-  font-size: 1.5em;
-  margin: 2em auto;
-}
-
 #gameBoard {
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 #letterButtons {
@@ -111,12 +192,18 @@ footer {
 #letterButtons button:not(last-child) {
   margin: 4px 4px;
   cursor: pointer;
-  max-width: 84px;
-  min-width: 84px;
+  max-width: 70px;
+  min-width: 70px;
+  max-height: 50px;
+}
+
+#letterBoxes {
+  text-align: center;
 }
 
 #letterBoxes li {
   display: inline-flex;
+  margin-right: 10px;
 }
 
 #letterBoxes input {
@@ -134,16 +221,18 @@ footer {
 #message {
   padding-top: 20px;
   font-size: 1.5em;
+  text-align: center;
+  color: #2164bb;
 }
 
 .btn {
   -moz-user-select: text;
-  background-color: #fff;
-  background: transparent;
-  border-radius: 6px;
+  background-color: rgb(0, 18, 66);
+  /* background: transparent; */
+  border-radius: 8px;
   border: 0;
   border: 2px solid #666;
-  color: #666;
+  color: rgb(255, 255, 255);
   cursor: pointer;
   display: block;
   font: inherit;
@@ -152,7 +241,7 @@ footer {
   margin: 0;
   overflow: visible;
   padding: 0;
-  padding: 16px 36px 22px;
+  padding: 15px 20px;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -167,7 +256,7 @@ footer {
   position: relative;
 }
 
-.btn--stripe:after {
+/* .btn--stripe:after {
   content: "";
   display: block;
   height: 7px;
@@ -193,7 +282,7 @@ footer {
   left: 0;
   bottom: 0;
   background-size: 7px 7px;
-}
+} */
 
 .btn--stripe:disabled {
   background-color: #999;
@@ -205,9 +294,9 @@ footer {
   background-color: #666;
   color: #fff;
   border-color: #000;
-}
+} 
 
-.btn--stripe:disabled:after,
+/* .btn--stripe:disabled:after,
 .btn--stripe:hover:after {
   background-image: -webkit-repeating-linear-gradient(
     45deg,
@@ -224,4 +313,4 @@ footer {
     transparent 5px
   );
   border-top: 1px solid #000;
-}
+} */
