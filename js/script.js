@@ -120,14 +120,14 @@ function generateLB(amount) {
 }
 
 //Function that activates letters buttons
-function activate() {
+function activateLetterButtons() {
   for (let i = 0; i < letterButtonEls.length; i++) {
     letterButtonEls[i].disabled = false;
   }
 }
 
 // Function that deactivates the letter buttons when the game ends
-function deactivate() {
+function disableLetterButtons() {
   for (let i = 0; i < letterButtonEls.length; i++) {
     letterButtonEls[i].disabled = true;
   }
@@ -157,7 +157,7 @@ function gameResult() {
 // Function that shows if player wins
 function gameWon() {
   informUser(`Bra jobbat! Du har hittat rätt ord - ${selectedWord}`);
-  deactivate();
+  disableLetterButtons();
   console.log("Game won.");
   console.log("Thank you for playing!")
 }
@@ -165,7 +165,7 @@ function gameWon() {
 // Function that shows if player loses
 function gameLose() {
   informUser(`Ooops! Titta vem hänger här :) Rätt ord var ${selectedWord}`);
-  deactivate();
+  disableLetterButtons();
   console.log("Game lost.")
   console.log("Thank you for playing!")
 }
@@ -179,7 +179,7 @@ function startGame() {
   guesses = 0;
   lettersFound = 0;
   removeLB();
-  activate();
+  activateLetterButtons();
   generateLB(wordLenght);
   setHangManImg(0);
   informUser("");
